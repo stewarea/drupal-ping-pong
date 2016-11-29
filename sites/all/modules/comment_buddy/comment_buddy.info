@@ -1,0 +1,5 @@
+name = comment_buddy_menu
+description = Display messages when users create, update, or delete comments.
+package = My First Modules
+core = 7.x
+files[] = comment_buddy.module

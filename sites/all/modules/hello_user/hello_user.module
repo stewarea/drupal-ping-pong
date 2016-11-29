@@ -1,0 +1,21 @@
+<?php
+
+function hello_user_menu()
+{
+    $items = array();
+    $items['hello_user'] = array(
+        'title' => 'Hello User',
+        'page callback' => 'hello_new_user_insert',
+        'access callback' => TRUE,
+        // 'page arguments' => array($friend),
+        'type' => MENU_CALLBACK,
+    );
+    return $items;
+}
+
+function hello_new_user_insert()
+{
+    return '
+        <p> YEEEEEEEEEESSSSS... fresh meat... </p>
+    ';
+}

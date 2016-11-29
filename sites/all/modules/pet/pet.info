@@ -3,3 +3,4 @@ description = List out Pet information.
 package = My First Modules
 core = 7.x
 files[] = pet.module
+stylesheets[all][] = style.css

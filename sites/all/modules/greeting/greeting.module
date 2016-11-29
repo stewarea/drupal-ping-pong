@@ -8,9 +8,15 @@ function greeting_menu() {
         'access callback' => TRUE,
         'type' => MENU_CALLBACK,
     );
-    $items['farewell'] = array(
-        'title' => "Farewell friend!",
-        'page callback' => 'say_farewell',
+    $items['bye_admin'] = array(
+        'title' => "Admin Logout",
+        'page callback' => 'say_farewell_admin',
+        'access callback' => TRUE,
+        'type' => MENU_CALLBACK,
+    );
+    $items['bye_user'] = array(
+        'title' => "User Logout",
+        'page callback' => 'say_farewell_user',
         'access callback' => TRUE,
         'type' => MENU_CALLBACK,
     );
@@ -21,14 +27,33 @@ function say_hello() {
     return '<p>Hello my dear friend!</p>';
 }
 
-function say_farewell() {
-    return '<p>Fare thee well my dear friend</p>';
+function say_farewell_admin() {
+    return '<p>Goodbye Admin</p>';
 }
 
-function greeting_user_login() {
+function say_farewell_user() {
+    return '<p>Bye User!</p>';
+}
+
+function greeting_user_login(&$edit, $account) {
+    if($account->roles[3]) {
+        drupal_set_message("Welcome to the Admin View!");
+    } else {
+        drupal_set_message("Nice to see you!");
+    }
+
+    //     echo '<pre>';
+    // var_dump($account->roles[3]);
+    // echo '</pre>';
+    // exit;
+
     $_GET['destination'] = 'hello_friend';
 }
 
-function greeting_user_logout() {
-    $_GET['destination'] = 'farewell';
+function greeting_user_logout($account) {
+    if($account->roles[3]) {
+        $_GET['destination'] = 'bye_admin';
+    } else {
+        $_GET['destination'] = 'bye_user';
+    }
 }

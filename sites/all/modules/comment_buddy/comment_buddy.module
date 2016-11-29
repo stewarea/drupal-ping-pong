@@ -1,0 +1,40 @@
+<?php
+
+function comment_buddy_menu()
+{
+    $items = array();
+    $items['comment_created'] = array(
+        'title' => 'Comment Created',
+        'page comeback' => 'comment_buddy_comment_insert',
+        'access callback' => TRUE,
+        'type' => MENU_CALLBACK
+    );
+    $items['comment_updated'] = array(
+        'title' => 'Comment Updated',
+        'page comeback' => 'comment_buddy_comment_update',
+        'access callback' => TRUE,
+        'type' => MENU_CALLBACK
+    );
+    $items['comment_deleted'] = array(
+        'title' => 'Comment Deleted',
+        'page comeback' => 'comment_buddy_comment_delete',
+        'access callback' => TRUE,
+        'type' => MENU_CALLBACK
+    );
+    return $items;
+}
+
+function comment_buddy_comment_insert()
+{
+    drupal_set_message("Your comment has been posted!");
+}
+
+function comment_buddy_comment_update()
+{
+    drupal_set_message("Your comment has been updated!");
+}
+
+function comment_buddy_comment_delete()
+{
+    drupal_set_message("Your comment has been deleted!");
+}

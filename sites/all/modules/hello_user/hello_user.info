@@ -1,0 +1,5 @@
+name = hello_user
+description = say hi to new users.
+package = My First Modules
+core = 7.x
+files[] = hello_user.module
