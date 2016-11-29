@@ -1,0 +1,5 @@
+name = Cards
+description = Say hello to friends.
+package = My First Modules
+core = 7.x
+files[] = cards.module

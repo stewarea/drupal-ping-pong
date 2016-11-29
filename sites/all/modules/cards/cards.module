@@ -1,0 +1,21 @@
+<?php
+function cards_menu()
+{
+    $items = array();
+    $friends = array('Bob', 'Ryan', 'Martin');
+    foreach ($friends as $friend) {
+        $items['cards/' . $friend] = array(
+        'title' => $friend,
+        'page callback' => 'cards_display',
+        'page arguments' => array($friend),
+        'access callback' => TRUE,
+        'type' => MENU_NORMAL_ITEM,
+        );
+    }
+    return $items;
+}
+
+function cards_display($name)
+{
+    return '<p>Hi there</p>' . $name;
+}

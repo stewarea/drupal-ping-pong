@@ -1,0 +1,24 @@
+<?php
+
+function specials_menu()
+{
+    $items = array();
+    $items['specials'] = array(
+        'title' => "Specials",
+        'page callback'=>'specials_display',
+        'access callback' => TRUE,
+        'type' => MENU_NORMAL_ITEM,
+    );
+    return $items;
+}
+
+function specials_display()
+{
+    return '
+        <ul>
+            <li>Drink</li>
+            <li>Drank</li>
+            <li>Drunk</li>
+        </ul>
+    ';
+}

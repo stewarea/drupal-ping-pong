@@ -1,0 +1,23 @@
+<?php
+
+function pet_menu()
+{
+    $items = array();
+    $items['pet'] = array (
+        'title' => 'pet',
+        'page callback' => 'pet_display',
+        'access callback' => TRUE,
+        'type' => MENU_NORMAL_ITEM,
+    );
+    return $items;
+}
+
+function pet_display()
+{
+    return '
+        <link rel="stylesheet" type="text/css" href="../sites/all/modules/pet/style.css">
+        <h1>Meet Henk</h1>
+        <a href="https://en.wikipedia.org/wiki/Golden_Retriever">More info</a>
+        <img id="henk" src="../sites/all/modules/pet/henk.jpg" alt="Henk the Doge">
+    ';
+}
