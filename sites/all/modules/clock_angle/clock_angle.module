@@ -1,0 +1,63 @@
+<?php
+    function clock_angle_menu() {
+        $items['clock_angle'] = array(
+            'title' => 'Find Clock Angle',
+            'page callback' => 'drupal_get_form',
+            'page arguments' => array('clock_angle_form'),
+            'access callback' => TRUE,
+            'type' => MENU_NORMAL_ITEM
+        );
+
+        $items['clock_angle_success_page'] = array(
+            'title' => 'You Did it!',
+            'page callback' => 'clock_angle_success',
+            'access callback' => TRUE,
+            'type' => MENU_CALLBACK,
+        );
+        return $items;
+    }
+
+    function clock_angle_form() {
+        $form['hour_hand'] = array(
+            '#title' => 'Hour',
+            '#type' => 'textfield',
+            '#description' => t('Please enter an hour'),
+        );
+        $form['minute_hand'] = array(
+            '#title' => 'Minutes',
+            '#type' => 'textfield',
+            '#description' => t('Please enter an minute amount'),
+        );
+        $form['submit'] = array(
+            '#type' => 'submit',
+            '#value' => 'Go!',
+        );
+        return $form;
+    }
+
+    function clock_angle_form_submit($form, &$form_state) {
+        $hour = $form_state['values']['hour_hand'];
+        $minutes = $form_state['values']['minute_hand'];
+
+        if($hour == 12) {
+            $hour = "0";
+        } else {
+        }
+
+        $hour_degrees = ($hour * 30);
+        $minutes_degrees = ($minutes * 6);
+
+        if($minutes_degrees >= 180) {
+            $minutes_degrees = $minutes_degrees - 180;
+        } else {
+        }
+
+        $_SESSION['output'] = abs($minutes_degrees - $hour_degrees);
+
+        $form_state['redirect'] = 'clock_angle_success_page';
+    }
+
+    function clock_angle_success() {
+        $answer = $_SESSION['output'];
+        return 'The difference in hands is ' . $answer;
+    }
